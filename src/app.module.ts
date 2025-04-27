@@ -56,8 +56,8 @@ import { CacheService } from './common/services/cache.service';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ([
         {
-          ttl: 60,
-          limit: 10,
+          ttl: parseInt(process.env.RATE_LIMIT_TTL || '60', 10),
+          limit: parseInt(process.env.RATE_LIMIT_LIMIT || '100', 10),
         },
       ]),
     }),
